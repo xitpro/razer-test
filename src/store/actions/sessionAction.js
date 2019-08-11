@@ -74,6 +74,7 @@ function chooseProfile(id) {
     var idNum = parseInt(id.substring(id.lastIndexOf('-') + 1));
     var index = list.findIndex(i => i.id === idNum);
     console.log('index' + index);
+    console.log('index' + list[index].name);
     list[oldChoose].choose = '';
     list[index].choose = 'active';
     localStorage.setItem('defaultProfiles', JSON.stringify(list));
@@ -143,7 +144,7 @@ function changeProfileName(Name) {
     var list = JSON.parse(localStorage.defaultProfiles);
     var selected = JSON.parse(localStorage.selected);
     console.log('Dis vo day ', Name);
-    if(Name === ""){
+    if(Name.trim() === ""){
       return list[selected].name;
     } else{
       list[selected].name = Name;

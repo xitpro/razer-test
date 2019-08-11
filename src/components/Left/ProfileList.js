@@ -9,6 +9,12 @@ import React, {Component} from 'react';
 class ProfileList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      listpro: '',
+    }
+  }
+  componentDidMount() {
+   
   }
   render() {
     const getProfiles = () => {
@@ -34,24 +40,25 @@ class ProfileList extends Component {
         <div id="profileList" className="scrollable">
           {listProfiles}
           <input
+            defaultValue={this.props.defaultProfiles[this.props.selected].name}
             id="profileRename"
-            type="text" ref={(ip) => this.myInput = ip}
+            type="text"
+            ref={this.textInput}
             placeholder="enter new profile"
             className={this.props.showFormEdit ? 'profile-item show' : 'profile-item'}
-            defaultValue={this.props.nameProfileSelected}
             maxLength="25"
             style={{ top: 30 * this.props.selected }}
             onChange={this.props.handleInputChange}
             // value={props.nameSelected}
             onKeyDown={this.props.keyPress}
-            onFocus={this.props.handleFocus}
+            // onFocus={this.props.handleFocus}
             onBlur={this.props.renameProfile}
           />
         </div>
-      );
-  }; 
-    
+      );     
+    }; 
   return getProfiles();
+  
   }
 }
 

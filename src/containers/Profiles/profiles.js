@@ -36,7 +36,7 @@ class Profiles extends Component {
       handleClickOut = e => {
         console.log('click at ' + e.target.id);
         
-      //  var name = this.props.defaultProfiles[this.props.selected].name;
+        var name = this.props.defaultProfiles[this.props.selected].name;
         if (this.state.showFormEdit === true && e.target.id !== 'profileRename') {
          // this.renameProfileWithButton();
           this.setState({ 
@@ -55,9 +55,11 @@ class Profiles extends Component {
     
       setCurrentProfile = async e => {
         await this.props.actions.chooseProfile(e.target.id);
+        
         this.setState({
           nameCurrentProfile: this.props.defaultProfiles[this.props.selected].name,
         });
+        console.log('cccccccccccc ' + this.props.defaultProfiles[this.props.selected].name)
       };
     
       addProfile = async () => {
@@ -69,8 +71,7 @@ class Profiles extends Component {
       };
     
       moveUp = () => {
-        this.props.actions.moveUp();
-        document.getElementById('profileUp').scrollTop = 9999999;
+        this.props.actions.moveUp();        
       };
     
       moveDown = () => {
@@ -92,14 +93,8 @@ class Profiles extends Component {
     
       handleInputChange = e => {
         
-        var name = this.props.defaultProfiles[this.props.selected].name;
-        console.log('fuck you ' + name);
         console.log('name changing handle ' + e.target.value);
-        if(!e.target.value==null){
-          console.log('nhay vo day ' + e.target.value)
-         
-        }
-        
+       
         this.setState({
           nameCurrentProfile: e.target.value, 
           nameChanged: e.target.value });
@@ -116,7 +111,7 @@ class Profiles extends Component {
         await this.props.actions.changeProfileName(this.state.nameChanged);
     
         this.setState({
-          // nameSelected: '',
+          nameSelected: '',
           showFormEdit: false,
         });
       };
@@ -136,6 +131,7 @@ class Profiles extends Component {
       deleteProfile = async e => {
         await this.props.actions.removeProfile();
         this.setState({
+          nameCurrentProfile: this.props.defaultProfiles[this.props.selected].name,
           showDeleteCfm: false,
         });
       };
@@ -154,6 +150,7 @@ class Profiles extends Component {
                 showFormEdit={this.state.showFormEdit}
                 handleInputChange={this.handleInputChange}
                 nameSelected={this.state.nameSelected}
+                //nameSelected = {this.state.nameCurrentProfile}
                 keyPress={this.keyPress}
                 handleFocus={this.handleFocus}
                 showEdit={this.renameProfileToggle}

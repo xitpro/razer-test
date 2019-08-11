@@ -10,19 +10,18 @@ import ProfileList from './ProfileList';
 import Tools from './Tools';
 
 class LeftWindow extends Component {
+    
     constructor(props){
         super(props);
+     
     }
-    focusInput = () => {
-        this.myView.myInput.focus()
-    }
+  
     render() { 
         return ( 
             <div className="thx-drawer flex">
             <div className="main-title">Profile List</div>
             <div id="profileWrapper" className="drawer-select flex">
                 <ProfileList
-                ref={(view) => {this.myView = view}}
                 defaultProfiles ={this.props.defaultProfiles}
                 setCurrentProfile={this.props.setCurrentProfile}
                 showFormEdit={this.props.showFormEdit}
@@ -35,7 +34,6 @@ class LeftWindow extends Component {
                 />
 
                 <Tools
-                focusInput={this.focusInput}
                 defaultProfiles={this.props.defaultProfiles}          
                 addProfile={this.props.addProfile}
                 showEdit={this.props.showEdit}
@@ -47,7 +45,9 @@ class LeftWindow extends Component {
                 deleteProfile={this.props.deleteProfile} 
                 />  
             </div>
+            
         </div>
+        
          );
     }
 }

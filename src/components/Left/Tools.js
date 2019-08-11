@@ -5,20 +5,23 @@ class Tools extends Component {
   constructor(props) {
     super(props);
   }
+
   render() { 
     var isDefault = this.props.defaultProfiles[this.props.selected].isDefault;
-    
+        
   return (
     <div className="toolbar flex">
       <div className="toolbar flex">
+        
         <div className="icon add" id="profileAdd" 
               onClick={this.props.addProfile} />
         <div
           className={isDefault === true ? 'icon edit' : 'icon edit show'}
-          id="profileRename"
+          id="profileEdit"
+          for="focus-input"
           onClick={this.props.showEdit}
         />
-
+      
         <div
           className={isDefault === true ? 'icon delete' : 'icon delete show'}
           id="profileDelete"
@@ -68,6 +71,7 @@ class Tools extends Component {
         />
         
       </div>
+      
     </div>
     
   );
